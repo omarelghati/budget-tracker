@@ -18,10 +18,6 @@ services:
       - "27017:27017"
     networks:
       - tracker_network
-networks:
-  tracker_network:
-    driver: "bridge"
-
   frontend:
     container_name: budget-tracker-frontend
     restart: always
@@ -30,3 +26,9 @@ networks:
       - "3000:3000"
     external_links:
       - backend
+    networks:
+      - tracker_network
+
+networks:
+  tracker_network:
+    driver: bridge
