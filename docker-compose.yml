@@ -8,11 +8,20 @@ services:
       - "3001:3001"
     external_links:
       - mongo
+    networks:
+      - tracker_network
+
   mongo:
     container_name: mongo
     image: larsla/mongo-armv7l
     ports:
       - "27017:27017"
+    networks:
+      - tracker_network
+networks:
+  tracker_network:
+    driver: "bridge"
+
   frontend:
     container_name: budget-tracker-frontend
     restart: always
