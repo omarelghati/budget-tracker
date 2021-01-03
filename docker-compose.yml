@@ -13,7 +13,7 @@ services:
     image: larsla/mongo-armv7l
     ports:
       - "27017:27017"
-  frontent:
+  frontend:
     container_name: budget-tracker-frontend
     restart: always
     build: ./frontend
