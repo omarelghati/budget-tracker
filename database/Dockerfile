@@ -4,5 +4,5 @@ COPY setup.sh /data/setup.sh
 
 EXPOSE 27017
 VOLUME /data/db
-RUN ["chmod", "+x", "./setup.sh"]
+RUN ["chmod", "+x", "/data/setup.sh"]
 RUN ./setup.sh
