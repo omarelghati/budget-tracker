@@ -16,8 +16,6 @@ services:
     build: ./database
     networks:
       - tracker_network
-    volumes:
-      - ./data:/data/db
   frontend:
     container_name: budget-tracker-frontend
     restart: always
