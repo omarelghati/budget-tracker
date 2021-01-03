@@ -13,9 +13,7 @@ services:
 
   mongo:
     container_name: mongo
-    image: larsla/mongo-armv7l
-    ports:
-      - "27017:27017"
+    build: ./database
     networks:
       - tracker_network
   frontend:
