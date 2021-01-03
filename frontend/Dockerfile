@@ -2,14 +2,12 @@ FROM node:10
 
 WORKDIR /usr/src/frontend
 
-COPY package.json ./
+COPY package*.json ./
 
-COPY yarn.lock ./
-
-RUN yarn
+RUN npm install
 
 COPY . .
 
 EXPOSE 3000
 
-CMD ["yarn", "start"]
+CMD ["npm", "start"]
