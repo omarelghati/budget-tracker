@@ -4,6 +4,8 @@ WORKDIR /usr/src/frontend
 
 COPY package.json ./
 
+COPY yarn.lock ./
+
 RUN yarn
 
 COPY . .
