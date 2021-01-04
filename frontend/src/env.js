@@ -1,5 +1,5 @@
 const environment = {
-  baseURL: "https://fast-stream-86922.herokuapp.com/api",
+  baseURL: "http://backend:3001/api",
 };
 
 export default environment;
