@@ -9,13 +9,13 @@ services:
     depends_on:
       - mongo
     networks:
-      - tracker_network
+      - budgettrackernetwork
 
   mongo:
     container_name: mongo
     build: ./database
     networks:
-      - tracker_network
+      - budgettrackernetwork
 
   frontend:
     container_name: budget-tracker-frontend
@@ -25,10 +25,9 @@ services:
       - "3000:3000"
     stdin_open: true
     networks:
-      - tracker_network
+      - budgettrackernetwork
     depends_on:
       - backend
-
 networks:
-  tracker_network:
+  budgettrackernetwork:
     driver: bridge
