@@ -16,12 +16,14 @@ services:
     build: ./database
     networks:
       - tracker_network
+
   frontend:
     container_name: budget-tracker-frontend
     restart: always
     build: ./frontend
     ports:
       - "3000:3000"
+    stdin_open: true
     external_links:
       - backend
     networks:
