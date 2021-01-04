@@ -6,7 +6,7 @@ services:
     build: ./backend
     ports:
       - "3001:3001"
-    external_links:
+    depends_on:
       - mongo
     networks:
       - tracker_network
@@ -24,8 +24,6 @@ services:
     ports:
       - "3000:3000"
     stdin_open: true
-    external_links:
-      - backend
     networks:
       - tracker_network
 
