@@ -26,6 +26,8 @@ services:
     stdin_open: true
     networks:
       - tracker_network
+    depends_on:
+      - backend
 
 networks:
   tracker_network:
