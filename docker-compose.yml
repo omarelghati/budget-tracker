@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3"
 services:
   backend:
     container_name: budget-tracker-backend
@@ -6,28 +6,29 @@ services:
     build: ./backend
     ports:
       - "3001:3001"
+    networks:
+      - mern-app
     depends_on:
       - mongo
-    networks:
-      - budgettrackernetwork
-
   mongo:
     container_name: mongo
     build: ./database
+    ports:
+      - "27017:27017"
     networks:
-      - budgettrackernetwork
+      - mern-app
 
   frontend:
     container_name: budget-tracker-frontend
+    stdin_open: true
     restart: always
     build: ./frontend
     ports:
       - "3000:3000"
-    stdin_open: true
     networks:
-      - budgettrackernetwork
+      - mern-app
     depends_on:
       - backend
 networks:
-  budgettrackernetwork:
+  mern-app:
     driver: bridge
