@@ -1,5 +1,5 @@
 const environment = {
-  baseURL: "http://localhost:3001/api",
+  baseURL: "backend:3001/api",
 };
 
 export default environment;
