@@ -20,7 +20,6 @@ services:
 
   frontend:
     container_name: budget-tracker-frontend
-    stdin_open: true
     restart: always
     build: ./frontend
     ports:
