@@ -22,6 +22,7 @@ services:
     container_name: budget-tracker-frontend
     restart: always
     build: ./frontend
+    stdin_open: true
     ports:
       - "3000:3000"
     networks:
