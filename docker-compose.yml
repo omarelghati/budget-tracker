@@ -16,7 +16,7 @@ services:
     container_name: mongo
     build: ./database
     ports:
-      - "27017:27017"
+      - "27018:27018"
     networks:
       - mern-app
 
