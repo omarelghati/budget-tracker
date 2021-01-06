@@ -12,6 +12,8 @@ services:
       - mern-app
     depends_on:
       - mongo
+    volumes:
+      - ./backend:/usr/src/app
   mongo:
     container_name: mongo
     build: ./database
@@ -31,6 +33,8 @@ services:
       - mern-app
     depends_on:
       - backend
+    volumes:
+      - ./frontend:/usr/src/app
 networks:
   mern-app:
     driver: bridge

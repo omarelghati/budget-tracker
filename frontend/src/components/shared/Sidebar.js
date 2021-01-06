@@ -10,9 +10,13 @@ const Side = () => {
   return (
     <nav className="navbar navbar-light navbar-expand-md navigation-clean-button">
       <div className="container">
-        <a className="navbar-brand" href="#">
+        <NavLink
+          activeClassName="somethinelse"
+          className="navbar-brand"
+          to="/dashboard"
+        >
           Budget Tracker
-        </a>
+        </NavLink>
         <button
           data-toggle="collapse"
           className="navbar-toggler"

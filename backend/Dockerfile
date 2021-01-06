@@ -1,12 +1,12 @@
 FROM node:10
 
-WORKDIR /usr/src/backend
+WORKDIR /usr/src/app
 
 COPY package*.json ./
 
 RUN npm install
 
-COPY . /usr/src/backend
+COPY . /usr/src/app
 
 EXPOSE 3001
 

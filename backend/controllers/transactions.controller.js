@@ -11,7 +11,7 @@ router.get("/", async (request, response) => {
   const monthIds = user.monthsList.map((x) => ObjectId(x));
   const months = await Month.find({ _id: { $in: monthIds } }, ["date", "id"], {
     sort: {
-      date: 1, //Sort by Date Added Asc
+      amunt: 1, //Sort by Date Added Asc
     },
   });
   let allTransactions = await Transaction.find(
@@ -125,7 +125,12 @@ router.put("/", async (request, response) => {
     const month = await Month.findById(oldTransaction.monthId);
     month.balance -= oldTransaction.amount;
     await Month.findByIdAndUpdate(month.id, { balance: month.balance });
+  } else if (oldTransaction.isPaid == true && newTransaction.isPaid == false) {
+    const month = await Month.findById(oldTransaction.monthId);
+    month.balance += oldTransaction.amount;
+    await Month.findByIdAndUpdate(month.id, { balance: month.balance });
   }
+
   await Transaction.findByIdAndUpdate(oldTransaction.id, newTransaction);
   return response.status(200).json(newTransaction);
 });
