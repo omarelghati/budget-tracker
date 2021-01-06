@@ -11,12 +11,12 @@ services:
     networks:
       - mern-app
     depends_on:
-      - mongo
-  mongo:
+      - database
+  database:
     container_name: mongo
     build: ./database
     ports:
-      - "27018:27018"
+      - "27017:27017"
     networks:
       - mern-app
 
