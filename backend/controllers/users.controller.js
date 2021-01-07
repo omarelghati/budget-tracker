@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const Month = require("../models/Month");
 
 const User = require("../models/User");
-const { JWT_SECRET, SALT_ROUNDS } = require("../utils/config");
+const { JWT_SECRET, SALT_ROUNDS } = require("../config");
 
 router.get("/", async (_, response) => {
   const users = await User.find({}, "-password").populate("Salary Month");

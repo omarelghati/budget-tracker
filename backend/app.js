@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const compression = require("compression");
 const cors = require("cors");
-const { MONGODB_URI, PORT } = require("./utils/config");
+const { MONGODB_URI, PORT } = require("./config");
 
 const usersRouter = require("./controllers/users.controller");
 const categoriesRouter = require("./controllers/categories.controller");

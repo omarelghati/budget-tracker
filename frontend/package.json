@@ -8,6 +8,7 @@
     "@reduxjs/toolkit": "^1.5.0",
     "bootstrap": "^4.5.3",
     "connected-react-router": "^6.8.0",
+    "env-cmd": "^10.1.0",
     "final-form": "^4.20.1",
     "history": "4.10.1",
     "http-proxy-middleware": "^1.0.6",
@@ -29,6 +30,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:dev": "env-cmd -f ./src/config/.env.dev react-scripts start",
+    "start:staging": "env-cmd -f ./src/config/.env.staging react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -39,7 +42,6 @@
       "react-app/jest"
     ]
   },
-  "proxy": "http://localhost:3001",
   "browserslist": {
     "production": [
       ">0.2%",
