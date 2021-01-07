@@ -50,25 +50,13 @@ const Side = () => {
               )}
             </li>
             <li className="nav-item dropdown">
-              <a
-                className="dropdown-toggle nav-link"
-                data-toggle="dropdown"
-                aria-expanded="false"
-                href="#"
+              <NavLink
+                activeClassName="active"
+                className="btn action-button"
+                to="/categories"
               >
-                Dropdown{" "}
-              </a>
-              <div className="dropdown-menu">
-                <a className="dropdown-item" href="#">
-                  First Item
-                </a>
-                <a className="dropdown-item" href="#">
-                  Second Item
-                </a>
-                <a className="dropdown-item" href="#">
-                  Third Item
-                </a>
-              </div>
+                Categories & Debts
+              </NavLink>
             </li>
           </ul>
           <span className="navbar-text actions">

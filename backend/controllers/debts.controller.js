@@ -8,8 +8,10 @@ const Transaction = require("../models/Transaction");
 //get all debts
 router.get("/", async (_, response) => {
   const userid = _.get("x-bm-userId");
+  const user = await User.findById(userid);
+  if (!user) return response.status(400).json({ error: "user not found" });
   const debts = await Debt.find({ userId: userid });
-  response.status(200).json(debts);
+  return response.status(200).json({ debts });
 });
 
 //add debt

@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { FormError } from "./ui";
 import {
+  GET_CATEGORIES,
   GET_MONTHLY_STATISTICS,
   GET_TRANSACTIONS,
   EDIT_TRANSACTION,
+  GET_DEBTS,
 } from "../constants";
 
 const initialState = {
@@ -21,6 +23,7 @@ const initialState = {
   },
   salary: undefined,
   transactions: [],
+  debts: [],
   months: localStorage.months ? JSON.parse(localStorage.months) : [],
 };
 
@@ -55,6 +58,12 @@ const slice = createSlice({
       }
     },
     EditTransactionsSuccess: (state, action) => {},
+    GetDebtsSuccess: (state, action) => {
+      state.debts = action.payload.debts;
+    },
+    GetCategoriesSuccess: (state, action) => {
+      state.categories = action.payload.categories;
+    },
   },
 });
 
@@ -83,6 +92,32 @@ export const GetTransactionsAction = (month) => {
   };
 };
 
+export const GetDebtsAction = (month) => {
+  return {
+    type: GET_DEBTS,
+    payload: {
+      url: "/debts",
+      method: "GET",
+      onSuccess: GetDebtsSuccess.type,
+      onError: FormError.type,
+      params: month ? month : "",
+    },
+  };
+};
+
+export const GetCategoriesAction = (month) => {
+  return {
+    type: GET_CATEGORIES,
+    payload: {
+      url: "/categories",
+      method: "GET",
+      onSuccess: GetCategoriesSuccess.type,
+      onError: FormError.type,
+      params: month ? month : "",
+    },
+  };
+};
+
 export const EditTransactionAction = (transaction) => {
   return {
     type: EDIT_TRANSACTION,
@@ -101,4 +136,6 @@ export const {
   GetMonthlyStatisticsSuccess,
   GetTransactionsSuccess,
   EditTransactionsSuccess,
+  GetDebtsSuccess,
+  GetCategoriesSuccess,
 } = slice.actions;

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import Layout from "./components/Layout";
+import Layout from "./components/shared/Layout";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(

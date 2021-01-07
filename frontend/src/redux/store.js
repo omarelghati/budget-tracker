@@ -13,7 +13,7 @@ export default configureStore({
   reducer: rootReducer(history),
   middleware: [
     ...getDefaultMiddleware({ thunk: false }),
-    // logger,
+    logger,
     sagaMiddleware,
     routerMiddleware(history),
   ],

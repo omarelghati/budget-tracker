@@ -10,12 +10,6 @@ router.get("/", async (_, response) => {
 
 //create month
 router.post("/", async (request, response) => {
-  //check if month already exists
-  // check if there's an ongoing month (currentMonth.isClosed)
-  // if so, return an error saying that the current
-  //      month should be closed. (unless we wanted to add isFuture/isPkanned)
-  //set the salary as initial balance of the new month
-  // add the month as currentMonth + monthsList
   let { date } = request.body;
   const dateObject = new Date(date);
   console.log(dateObject);

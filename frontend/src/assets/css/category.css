@@ -1026,6 +1026,12 @@ td {
   padding-right: 10px;
 }
 
+.column0 {
+  width: 1.5%;
+  text-align: center;
+  /* padding-left: 40px; */
+}
+
 .column1 {
   width: 25%;
   /* padding-left: 40px; */
@@ -1121,4 +1127,12 @@ td {
 
 .column5 button {
   margin-left: 15px;
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+  td,
+  th {
+    font-size: 3vw !important;
+  }
 }

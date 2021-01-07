@@ -1,14 +1,14 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { ConnectedRouter } from "connected-react-router";
-import ThemeProvider from "../utils/theme";
-import Login from "../pages/LoginPage";
-import { Message } from "../utils";
-import { history } from "../redux/store";
-import Dashboard from "../pages/Dashboard";
-import Sidebar from "./shared/Sidebar";
-import Transaction from "./Transaction";
+import ThemeProvider from "../../utils/theme";
+import Login from "../../pages/LoginPage";
+import { Message } from "../../utils";
+import { history } from "../../redux/store";
+import Dashboard from "../../pages/Dashboard";
+import Sidebar from "./Sidebar";
+import Transaction from "../Transaction";
+import Category from "./../Category";
 
 function Layout() {
   return (
@@ -20,6 +20,7 @@ function Layout() {
             <Switch>
               <Route path="/dashboard" component={Dashboard} />
               <Route path="/transactions" component={Transaction} />
+              <Route path="/categories" component={Category} />
               <Route path="/login" component={Login} />
             </Switch>
             <Message />

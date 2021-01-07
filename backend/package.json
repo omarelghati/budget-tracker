@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "start:dev": "env-cmd -f ./config/.env.dev node app.js",
+    "start:dev": "env-cmd -f ./config/.env.dev nodemon app.js",
     "start:staging": "env-cmd -f ./config/.env.staging node app.js",
     "test": "echo \"Error: noo test specified\" && exit 1"
   }

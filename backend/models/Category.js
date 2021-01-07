@@ -9,9 +9,7 @@ const categorySchema = new Schema({
     type: ObjectId,
     ref: "User",
   },
-  // plannedAmount
-  //finalAmount
-  //remainingAmount
+  isActive: Boolean,
 });
 
 categorySchema.set("toJSON", {
