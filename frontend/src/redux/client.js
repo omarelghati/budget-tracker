@@ -13,7 +13,6 @@ export class TravelifyError extends Error {
 
 class Client {
   constructor() {
-    this.baseURL = environment.baseURL;
     this.headers = {
       Authorization: null,
       Accept: "application/json",
@@ -34,7 +33,7 @@ class Client {
         this.setCustomHeaders(userId, token);
       }
 
-      return fetch(`${this.baseURL}${url}`, {
+      return fetch(`${url}`, {
         headers: this.headers,
         method,
         body,
