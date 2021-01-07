@@ -54,17 +54,14 @@ export default function Transaction() {
       <div className="container-fluid">
         <div className="row">
           <div className="transactions-container col-4">
-            <h2> My transactions </h2>
+            <h2> Categories </h2>
             <div className="table100 ver1 m-b-110">
               <div className="table100-head">
                 <table>
                   <thead>
                     <tr className="row100 head">
-                      <th className="cell100 column1">Description</th>
-                      <th className="cell100 column2">Date</th>
-                      <th className="cell100 column3">Amount</th>
-                      <th className="cell100 column4">Category</th>
-                      <th className="cell100 column5">Actions</th>
+                      <th className="cell100 column1">Name</th>
+                      <th className="cell100 column2">Actions</th>
                     </tr>
                   </thead>
                 </table>
@@ -81,21 +78,6 @@ export default function Transaction() {
                               {transaction.description}
                             </td>
                             <td className="cell100 column2">
-                              {new Date(transaction.date).toDateString()}
-                            </td>
-                            <td className="cell100 column3">
-                              {transaction.amount} {currency}{" "}
-                              {transaction.isPaid == false && (
-                                <span className="badge badge-warning">
-                                  pending
-                                </span>
-                              )}
-                            </td>
-
-                            <td className="cell100 column4">
-                              {transaction.categoryId}
-                            </td>
-                            <td className="cell100 column5">
                               <button
                                 type="button"
                                 onClick={() => showEdit(transaction)}
