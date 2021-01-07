@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY package.staging.json ./
 
-COPY package-lock.json ./
+COPY package-*.json ./
 
 RUN npm install
 
