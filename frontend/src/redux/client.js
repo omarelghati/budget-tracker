@@ -1,5 +1,3 @@
-import environment from "../env";
-
 export class TravelifyError extends Error {
   constructor(error) {
     super(error);

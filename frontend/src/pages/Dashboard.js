@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import "../assets/css/Dashboard.css";
 import { useSelector } from "react-redux";
 
-import { Arc, ArcSeries, Tooltip, ChartProvider } from "rough-charts";
+// import { Arc, ArcSeries, Tooltip, ChartProvider } from "rough-charts";
 import { GetMonthlyStatisticsAction } from "./../redux/slices/api";
 
 export default function Dashboard() {

@@ -4,8 +4,19 @@ const User = require("../models/User");
 const ObjectId = require("mongoose").Types.ObjectId;
 
 router.get("/", async (_, response) => {
-  const categories = await Category.find();
-  response.status(200).json({ categories });
+  const userId = request.get("x-bm-userId");
+  const user = await User.findById(userId);
+  if (!user) {
+    return response.status(200).json({ error: "user not found" });
+  }
+  console.log(user.categoriesList);
+  if (!user.categoriesList) {
+    return response.status(200).json({ error: "this user has no categories" });
+  }
+
+  const categoryIds = user.categoriesList.map((x) => ObjectId(x));
+  const categories = await Category.find({ _id: { $in: categoryIds } });
+  return response.status(200).json({ categories });
 });
 
 //create category
