@@ -2,8 +2,9 @@ FROM node:10
 
 WORKDIR /usr/src/app
 
-RUN rm package.json
+RUN rm ./package.json
 
+COPY package.json /usr/src/app/package.dev.json
 COPY package.staging.json /usr/src/app/package.json
 
 RUN npm install
