@@ -1,5 +1,5 @@
 const environment = {
-  baseURL: "",
+  baseURL: "/api",
 };
 
 export default environment;
