@@ -4,10 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { GetTransactionsAction } from "../redux/slices/api";
 import { Modal } from "react-bootstrap";
 import { EditTransactionAction } from "./../redux/slices/api";
+import { useFormStyles } from "./../utils/index";
+import { Container } from "@material-ui/core";
 
 export default function Transaction() {
   const [showAdd, setShowAdd] = useState(false);
   const dispatch = useDispatch();
+  const classes = useFormStyles();
   useEffect(() => {
     dispatch(GetTransactionsAction());
   }, [dispatch]);
@@ -30,7 +33,6 @@ export default function Transaction() {
     setShowAdd(false);
     setTransaction({});
   };
-
   const handleMonthChange = (monthId) => {
     setMonth(monthId);
     dispatch(GetTransactionsAction(monthId));
@@ -50,62 +52,10 @@ export default function Transaction() {
     dispatch(GetTransactionsAction());
   };
   return (
-    <React.Fragment>
+    <Container className={classes.root}>
       <div className="container-fluid">
         <div className="row">
-          <div className="transactions-container col-4">
-            <h2> Categories </h2>
-            <div className="table100 ver1 m-b-110">
-              <div className="table100-head">
-                <table>
-                  <thead>
-                    <tr className="row100 head">
-                      <th className="cell100 column1">Name</th>
-                      <th className="cell100 column2">Actions</th>
-                    </tr>
-                  </thead>
-                </table>
-              </div>
-
-              <div className="table100-body js-pscroll">
-                <table>
-                  <tbody>
-                    {transactions && transactions.length ? (
-                      transactions.map((transaction, index) => {
-                        return (
-                          <tr key={index} className="row100 body">
-                            <td className="cell100 column1">
-                              {transaction.description}
-                            </td>
-                            <td className="cell100 column2">
-                              <button
-                                type="button"
-                                onClick={() => showEdit(transaction)}
-                                className="btn btn-sm btn-primary"
-                              >
-                                <i className="fa fa-edit"></i>
-                              </button>
-                              <button
-                                type="button"
-                                className="btn btn-sm btn-danger"
-                              >
-                                <i className="fa fa-trash"></i>
-                              </button>
-                            </td>
-                          </tr>
-                        );
-                      })
-                    ) : (
-                      <tr style={{ textAlign: "center", padding: "50px" }}>
-                        <td>No data found</td>
-                      </tr>
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div className="transactions-container col-8">
+          <div className="transactions-container col-md-8">
             <h2> My transactions </h2>
             <div className="table100 ver1 m-b-110">
               <div className="table100-head">
@@ -228,6 +178,58 @@ export default function Transaction() {
               </ul>
             </div>
           </div>
+          <div className="transactions-container col-md-4">
+            <h2> Categories </h2>
+            <div className="table100 ver1 m-b-110">
+              <div className="table100-head">
+                <table>
+                  <thead>
+                    <tr className="row100 head">
+                      <th className="cell100 column1">Name</th>
+                      <th className="cell100 column2">Actions</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+
+              <div className="table100-body js-pscroll">
+                <table>
+                  <tbody>
+                    {transactions && transactions.length ? (
+                      transactions.map((transaction, index) => {
+                        return (
+                          <tr key={index} className="row100 body">
+                            <td className="cell100 column1">
+                              {transaction.description}
+                            </td>
+                            <td className="cell100 column2">
+                              <button
+                                type="button"
+                                onClick={() => showEdit(transaction)}
+                                className="btn btn-sm btn-primary"
+                              >
+                                <i className="fa fa-edit"></i>
+                              </button>
+                              <button
+                                type="button"
+                                className="btn btn-sm btn-danger"
+                              >
+                                <i className="fa fa-trash"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        );
+                      })
+                    ) : (
+                      <tr style={{ textAlign: "center", padding: "50px" }}>
+                        <td>No data found</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <Modal onHide={handleClose} show={showAdd}>
@@ -298,6 +300,6 @@ export default function Transaction() {
           />
         </Modal.Footer>
       </Modal>
-    </React.Fragment>
+    </Container>
   );
 }

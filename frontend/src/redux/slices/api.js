@@ -2,10 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { FormError } from "./ui";
 import {
   GET_CATEGORIES,
+  ADD_CATEGORY,
   GET_MONTHLY_STATISTICS,
   GET_TRANSACTIONS,
   EDIT_TRANSACTION,
   GET_DEBTS,
+  ADD_DEBT,
 } from "../constants";
 
 const initialState = {
@@ -24,6 +26,7 @@ const initialState = {
   salary: undefined,
   transactions: [],
   debts: [],
+  categories: [],
   months: localStorage.months ? JSON.parse(localStorage.months) : [],
 };
 
@@ -63,6 +66,13 @@ const slice = createSlice({
     },
     GetCategoriesSuccess: (state, action) => {
       state.categories = action.payload.categories;
+    },
+    AddCategorySuccess: (state, action) => {
+      state.categories.push(action.payload.category);
+    },
+    AddDebtSuccess: (state, action) => {
+      //TODO
+      state.debts.push(action.payload.debt);
     },
   },
 });
@@ -131,11 +141,25 @@ export const EditTransactionAction = (transaction) => {
   };
 };
 
+export const AddCategoryAction = (category) => {
+  return {
+    type: ADD_CATEGORY,
+    payload: {
+      url: "/categories",
+      method: "POST",
+      onSuccess: AddCategorySuccess.type,
+      onError: FormError.type,
+      data: category,
+    },
+  };
+};
 export default slice.reducer;
 export const {
   GetMonthlyStatisticsSuccess,
   GetTransactionsSuccess,
   EditTransactionsSuccess,
   GetDebtsSuccess,
+  AddDebtSuccess,
   GetCategoriesSuccess,
+  AddCategorySuccess,
 } = slice.actions;

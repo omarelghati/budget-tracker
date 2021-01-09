@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import "../assets/css/category.css";
 import { useSelector, useDispatch } from "react-redux";
 import { GetCategoriesAction } from "../redux/slices/api";
-import { GetDebtsAction } from "./../redux/slices/api";
+import { GetDebtsAction } from "../redux/slices/api";
+import AddCategory from "../components/AddCategory";
 export default function Category() {
   function addCommas(num) {
     if (num) {
@@ -13,6 +14,7 @@ export default function Category() {
       return str.join(".");
     }
   }
+  const [showAddCategory, setShowAddCategory] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(GetDebtsAction());
@@ -35,7 +37,10 @@ export default function Category() {
                 <table>
                   <thead>
                     <tr className="row100 head">
-                      <th className="cell100 column0">
+                      <th
+                        className="cell100 column0"
+                        onClick={() => setShowAddCategory(true)}
+                      >
                         <span>
                           <i className="fa fa-plus" aria-hidden="true"></i>
                         </span>
@@ -51,16 +56,15 @@ export default function Category() {
                 <table>
                   <tbody>
                     {categories && categories.length ? (
-                      debts.map((transaction, index) => {
+                      categories.map((category, index) => {
                         return (
                           <tr key={index} className="row100 body">
                             <td className="cell100 column1">
-                              {transaction.title}
+                              {category.title}
                             </td>
                             <td className="cell100 column2">
                               <button
                                 type="button"
-                                // onClick={() => showEdit(transaction)}
                                 className="btn btn-sm btn-primary"
                               >
                                 <i className="fa fa-edit"></i>
@@ -158,6 +162,9 @@ export default function Category() {
           </div>
         </div>
       </div>
+      {showAddCategory && (
+        <AddCategory handleClose={() => setShowAddCategory(false)} />
+      )}
     </React.Fragment>
   );
 }

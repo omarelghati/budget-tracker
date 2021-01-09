@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import "../assets/css/Dashboard.css";
 import { useSelector } from "react-redux";
-
 // import { Arc, ArcSeries, Tooltip, ChartProvider } from "rough-charts";
 import { GetMonthlyStatisticsAction } from "./../redux/slices/api";
+import { useFormStyles } from "./../utils";
 
 export default function Dashboard() {
   const dispatch = useDispatch();
+  const classes = useFormStyles();
   useEffect(() => {
     dispatch(GetMonthlyStatisticsAction());
   }, [dispatch]);
@@ -32,7 +33,7 @@ export default function Dashboard() {
     state.api.salary,
   ]);
   return (
-    <div>
+    <div className={classes.root}>
       <div className="container pt-5">
         <div className="row align-items-stretch">
           <div className="c-dashboardInfo col-lg-3 col-md-6">

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { LOG_IN, SIGN_UP } from "../constants";
+import { LOG_IN, SIGN_UP, LOGOUT } from "../constants";
 import { FormError } from "./ui";
 
 const initialState = {
@@ -25,6 +25,8 @@ const slice = createSlice({
     },
     UserLogout: (state, action) => {
       localStorage.clear();
+      state.loggedIn = false;
+      state.user = {};
     },
   },
 });
@@ -41,7 +43,6 @@ export const LoginAction = (data) => {
     },
   };
 };
-
 export const RegisterAction = (data) => {
   return {
     type: SIGN_UP,
@@ -52,6 +53,12 @@ export const RegisterAction = (data) => {
       onError: FormError.type,
       data: data,
     },
+  };
+};
+
+export const LogoutAction = () => {
+  return {
+    type: LOGOUT,
   };
 };
 

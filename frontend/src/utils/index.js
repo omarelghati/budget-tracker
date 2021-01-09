@@ -69,12 +69,18 @@ export function LinearLoader() {
 }
 
 export function useLoader() {
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    setLoading(false);
-  }, []);
+  const [formError, formState] = useSelector((state) => [
+    state.ui.form.error,
+    state.ui.form,
+  ]);
 
-  return { loading, setLoading };
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    formState && setLoading(false);
+  }, [formState]);
+
+  return { loading, setLoading, formError };
 }
 export function generateKey() {
   return Math.random().toString(36).substr(2);

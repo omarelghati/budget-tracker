@@ -109,7 +109,7 @@ export default function Login() {
               label="Remember me"
             />
             <Button {...buttonProps}>
-              {loading && <Loader />}
+              {!formError && loading && <Loader />}
               Sign In
             </Button>
             <Grid container>

@@ -6,6 +6,7 @@ const initialState = {
     open: false,
     message: "",
   },
+  closeModal: false,
   preview: "",
   previewError: "",
   showAddPost: false,
@@ -16,6 +17,7 @@ const slice = createSlice({
   initialState: initialState,
   reducers: {
     FormError: (state, action) => {
+      console.log(action.payload);
       state.form.error = action.payload;
     },
     OpenSnackbar: (state, action) => {
@@ -45,8 +47,16 @@ const slice = createSlice({
       }
       state.preview = action.payload.preview;
     },
+    CloseModal: (state, action) => {
+      state.closeModal = true;
+    },
   },
 });
 
 export default slice.reducer;
-export const { FormError, OpenSnackbar, ClearFormErrors } = slice.actions;
+export const {
+  FormError,
+  OpenSnackbar,
+  ClearFormErrors,
+  CloseModal,
+} = slice.actions;

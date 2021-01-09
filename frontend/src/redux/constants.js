@@ -2,6 +2,7 @@ export const FORM_ERROR = "FORM_ERROR";
 export const CLEAR_FORM_ERROR = "CLEAR_FORM_ERROR";
 
 export const SIGN_UP = "SIGN_UP";
+export const LOGOUT = "LOGOUT";
 
 export const LOG_IN = "LOG_IN";
 export const LOG_OUT = "LOG_OUT";
@@ -46,5 +47,7 @@ export const GET_TRANSACTIONS = "GET_TRANSACTIONS";
 export const EDIT_TRANSACTION = "EDIT_TRANSACTION";
 
 export const GET_DEBTS = "GET_DEBTS";
+export const ADD_DEBTS = "ADD_DEBTS";
 
 export const GET_CATEGORIES = "GET_CATEGORIES";
+export const ADD_CATEGORY = "ADD_CATEGORY";

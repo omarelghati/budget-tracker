@@ -3,7 +3,7 @@ const Category = require("../models/Category");
 const User = require("../models/User");
 const ObjectId = require("mongoose").Types.ObjectId;
 
-router.get("/", async (_, response) => {
+router.get("/", async (request, response) => {
   const userId = request.get("x-bm-userId");
   const user = await User.findById(userId);
   if (!user) {
@@ -23,7 +23,7 @@ router.get("/", async (_, response) => {
 router.post("/", async (request, response) => {
   const { title } = request.body;
   const id = request.get("x-bm-userId");
-  const category = await Category.findOne({ title, userId: id });
+  let category = await Category.findOne({ title, userId: id });
   if (category) {
     return response.status(400).json({
       error: "there's a category with the same title",
@@ -35,12 +35,12 @@ router.post("/", async (request, response) => {
     title: title,
     _id: dbId,
   };
-  const { item } = await Category.create(payload);
+  category = await Category.create(payload);
   const user = await User.findById(id);
   if (!user.categoriesList) user.categoriesList = [];
   user.categoriesList.push(payload._id);
   await User.findByIdAndUpdate(id, { categoriesList: user.categoriesList });
-  return response.status(200).json(item);
+  return response.status(200).json({ category });
 });
 
 //update category
